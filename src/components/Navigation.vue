@@ -1,6 +1,11 @@
 <!-- HTML -->
 <template>
   <div id="navigation">
+    <div class="overlay">
+      <div class="questionwrapper">
+        whats your name?
+      </div>
+    </div>
     <div class="content-panel">
       <div class="previous-lines">
         this text should take up the space on the top
@@ -10,17 +15,20 @@
       </div>
     </div>
     <div class="user-panel">
-      this should be on the right
+      <user-panel v-bind:username="username"></user-panel>
     </div>
   </div>
 </template>
 
 <!-- Script -->
 <script>
+//child components
+import UserPanel from "./User-Panel";
+
 export default {
   name: 'navigation',
   components: {
-    
+    UserPanel
   },
   methods: {
     
@@ -49,12 +57,11 @@ export default {
   }
 
   .content-panel{
-    flex-grow: .85;
+    flex-grow: .75;
   }
 
   .user-panel{
-    background-color: thistle;
-    flex-grow: .15;
+    flex-grow: .25;
   }
 
   .previous-lines{
@@ -69,5 +76,18 @@ export default {
     display: inline-block;
     background-color:lightcoral;
     height: 25%;
+  }
+
+  .overlay{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+    display: none;
   }
 </style>
