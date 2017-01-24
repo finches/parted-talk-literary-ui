@@ -1,11 +1,7 @@
 <!-- HTML -->
 <template>
   <div id="navigation">
-    <div class="overlay">
-      <div class="questionwrapper">
-        whats your name?
-      </div>
-    </div>
+    <get-name v-on:username="setUsername($event)"></get-name>
     <div class="content-panel">
       <div class="previous-lines">
         this text should take up the space on the top
@@ -24,14 +20,18 @@
 <script>
 //child components
 import UserPanel from "./User-Panel";
+import GetName from "./Get-Name";
 
 export default {
   name: 'navigation',
   components: {
-    UserPanel
+    UserPanel,
+    GetName
   },
   methods: {
-    
+    setUsername(name){
+      this.username = name;
+    }
   },
   data () {
     return {
@@ -76,18 +76,5 @@ export default {
     display: inline-block;
     background-color:lightcoral;
     height: 25%;
-  }
-
-  .overlay{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: white;
-    display: flex;
-    align-content: center;
-    flex-direction: row;
-    display: none;
   }
 </style>
