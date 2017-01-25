@@ -3,8 +3,10 @@
     <div id="getname">
         <div id="content">
             <div id="question">what is your name?</div>
-            <input type="text" v-model="name" v-on:keyup.enter="sendName()"/>
-            <button type="button" v-on:click="sendName()">submit name</button>
+            <div class="question-holder">
+                <input type="text" v-model="name" v-on:keyup.enter="sendName()" maxlength="16"/>
+                <button type="button" v-on:click="sendName()">►</button>
+            </div>
         </div>
     </div>
 </template>
@@ -43,10 +45,33 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 4em;
+    font-size: 2.827em;
 }
 
 #content{
     flex-grow: .6;
+}
+
+input {
+    border: none;
+    border-bottom: 3px solid black;
+    font-size: 1em;
+    line-height: 16px;
+    margin-right: 0;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    outline: none;
+}
+
+button{
+    border:none;
+    font-size: 0.81em;
+    background-color:white;
+    position:absolute;
+    right: 0;
+    top: 8px;
+}
+
+.question-holder{
+    position:relative;
 }
 </style>
