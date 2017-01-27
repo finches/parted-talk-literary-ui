@@ -8,14 +8,9 @@
 
 <!-- Script -->
 <script>
-var fakeContent = '';
-for(var i = 0; i < 50; i++){
-    fakeContent += "this is placeholder text meant to take up space. there should be around 5 sentences per paragraph. it should be centered on the page with an appropriate amount of margin. there could be a up to 1000 characters per paragraph but thats fine. there might be a good way to split up the string"
-                + "[br]";
-}
-
 export default {
   name: 'words',
+  props:['content', 'title'],
   components: {
 
   },
@@ -26,9 +21,7 @@ export default {
   },
   data () {
     return {
-        title: "An Example Title",
-        content: fakeContent,
-        paragraph: ''
+
     }
   }
 }

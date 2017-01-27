@@ -2,12 +2,12 @@
 <template>
     <div id="writing">
         <div id="writing-title">
-            <span>enter the {{ segmentName }}:<span>
+            <span>enter the {{ segmentName() }}:<span>
             <span id="charactersRemaining"> {{ 200 - content.length }} </span>
         </div>
         <div class="content-holder">
-            <input type="text" v-model="content" maxlength="200"/>
-            <button type="button" v-on:click="">►</button>
+            <input type="text" v-model="content" v-on:keyup.enter="submitLine()" maxlength="200"/>
+            <button type="button" v-on:click="submitLine()">►</button>
         </div>
     </div>
 </template>
@@ -16,15 +16,23 @@
 <script>
 export default {
   name: 'writing',
+  props:['state'],
   components: {
 
   },
   methods: {
-    
+    submitLine: function(){
+        if(this.state == 'sentence') this.content.endsWith('.') ? this.content += ' ' : this.content += '. ';
+        this.$emit('content', this.content);
+        this.content = '';
+    },
+    segmentName: function(){
+        if(this.state == 'title') return 'story title';
+        else return 'next sentence'
+    }
   },
   data () {
     return {
-      segmentName: 'next sentence',
       content: ''
     }
   }

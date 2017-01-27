@@ -4,10 +4,10 @@
     <!--<get-name v-on:username="setUsername($event)"></get-name>-->
     <div class="content-panel">
       <div class="previous-lines">
-        <words>
+        <words v-bind:content="content" v-bind:title="title"></words>
       </div>
       <div class="writing-area">
-        <writing></writing>
+        <writing v-bind:state="getState()" v-on:content="submitContent($event)"></writing>
       </div>
     </div>
     <div class="user-panel">
@@ -33,13 +33,26 @@ export default {
     Words
   },
   methods: {
-    setUsername(name){
+    setUsername: function(name){
       this.username = name;
+    },
+    submitContent: function(content){
+      if(this.getState() == 'title') this.title = content;
+      else{
+        this.content += content;
+        if(Math.random() > 0.85) this.content += "[br]";
+      }
+    },
+    getState: function(){
+      if(this.title.length == 0) return 'title';
+      else return 'sentence';
     }
   },
   data () {
     return {
-      username: 'test name'
+      username: 'test name',
+      content: '',
+      title: ''
     }
   }
 }
