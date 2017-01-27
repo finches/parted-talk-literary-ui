@@ -1,13 +1,13 @@
 <!-- HTML -->
 <template>
   <div id="navigation">
-    <get-name v-on:username="setUsername($event)"></get-name>
+    <!--<get-name v-on:username="setUsername($event)"></get-name>-->
     <div class="content-panel">
       <div class="previous-lines">
         this text should take up the space on the top
       </div>
       <div class="writing-area">
-        this should take up space below it
+        <writing></writing>
       </div>
     </div>
     <div class="user-panel">
@@ -21,12 +21,14 @@
 //child components
 import UserPanel from "./User-Panel";
 import GetName from "./Get-Name";
+import Writing from "./Writing";
 
 export default {
   name: 'navigation',
   components: {
     UserPanel,
-    GetName
+    GetName,
+    Writing
   },
   methods: {
     setUsername(name){
@@ -74,7 +76,6 @@ export default {
   .writing-area{
     width: 100%;
     display: inline-block;
-    background-color:lightcoral;
     height: 25%;
   }
 </style>
