@@ -4,7 +4,7 @@
     <!--<get-name v-on:username="setUsername($event)"></get-name>-->
     <div class="content-panel">
       <div class="previous-lines">
-        this text should take up the space on the top
+        <words>
       </div>
       <div class="writing-area">
         <writing></writing>
@@ -22,13 +22,15 @@
 import UserPanel from "./User-Panel";
 import GetName from "./Get-Name";
 import Writing from "./Writing";
+import Words from "./Words";
 
 export default {
   name: 'navigation',
   components: {
     UserPanel,
     GetName,
-    Writing
+    Writing,
+    Words
   },
   methods: {
     setUsername(name){
@@ -59,17 +61,16 @@ export default {
   }
 
   .content-panel{
-    flex-grow: .75;
+    width: 75%;
   }
 
   .user-panel{
-    flex-grow: .25;
+    width: 25%;
   }
 
   .previous-lines{
     width: 100%;
     display: inline-block;
-    background-color: aqua;
     height: 75%;
   }
 
