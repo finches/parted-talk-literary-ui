@@ -6,6 +6,10 @@
 
 <script>
 import Navigation from './components/Navigation'
+import Vue from 'vue'
+import VueSocketio from 'vue-socket.io'
+
+Vue.use(VueSocketio, 'http://localhost:4001');
 
 export default {
   name: 'app',
