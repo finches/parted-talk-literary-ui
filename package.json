@@ -1,7 +1,7 @@
 {
-  "name": "corwin-survey",
+  "name": "parted-talk-literary-ui",
   "version": "1.0.0",
-  "description": "Corwin web survey",
+  "description": "TED Talk UI",
   "author": "Ryan Hammond <ryanhammond13@gmail.com>",
   "private": true,
   "scripts": {
