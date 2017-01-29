@@ -1,7 +1,7 @@
 <!-- HTML -->
 <template>
   <div id="navigation">
-    <!--<get-name v-on:username="setUsername($event)"></get-name>-->
+    <get-name v-on:username="setUsername($event)"></get-name>
     <div class="content-panel">
       <div class="previous-lines">
         <words v-bind:content="content" v-bind:title="title"></words>

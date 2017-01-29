@@ -22,6 +22,7 @@ export default {
     sendName() {
         this.$el.style.display = 'none';
         this.$emit('username', this.name);
+        this.$socket.emit('user-name', this.name);
     }
   },
   data () {
