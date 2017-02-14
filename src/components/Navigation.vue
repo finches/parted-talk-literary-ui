@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="user-panel">
-      <user-panel v-bind:username="username"></user-panel>
+      <user-panel v-bind:username="username" v-bind:userid="userId"></user-panel>
     </div>
   </div>
 </template>
@@ -31,6 +31,11 @@ export default {
     GetName,
     Writing,
     Words
+  },
+  sockets:{
+    connId: function(val){
+      this.userId = val;
+    }
   },
   methods: {
     setUsername: function(name){
@@ -52,7 +57,8 @@ export default {
     return {
       username: 'test name',
       content: '',
-      title: ''
+      title: '',
+      userId: ''
     }
   }
 }

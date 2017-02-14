@@ -6,7 +6,8 @@
         </div>
         <div class="userlist">
             <ul>
-                <li id="currentuser">{{ username }}</li>
+                <li id="currentuser">{{ currentUser }}</li>
+                <li v-for="id in connectedUsers">{{ users[id] }}</li>
             </ul>
         </div>
     </div>
@@ -16,16 +17,45 @@
 <script>
 export default {
   name: 'user-panel',
-  props: ['username'],
+  sockets:{
+    userName: function(val){
+        if(val.id != this.userid){
+            this.users[val.id] = val.name;
+        }
+        else{
+            this.currentUser = val.name;
+        }
+        this.getUserIds();
+    },
+    initialUsers: function(val){
+        val.forEach((returnedUser) => {
+            if(returnedUser.id != this.userid) this.users[returnedUser.id] = returnedUser.name;
+        });
+        this.getUserIds();
+    },
+    removeUser: function(val){
+        delete this.users[val];
+        this.getUserIds();
+    }
+  },
+  props: ['username', 'userid'],
   components: {
     
   },
   methods: {
-    
+    getUserIds: function(){
+        var ids = [];
+        for(var id in this.users) {
+            if(id != this.userid && this.users[id] != "") ids.push(id);
+        }
+        this.connectedUsers = ids;
+    }
   },
   data () {
     return {
-
+        users: {},
+        currentUser: '',
+        connectedUsers: []
     }
   }
 }
