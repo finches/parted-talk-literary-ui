@@ -23,7 +23,6 @@ export default {
   methods: {
     submitLine: function(){
         if(this.state == 'sentence') this.content.endsWith('.') ? this.content += ' ' : this.content += '. ';
-        this.$emit('content', this.content);
         this.$socket.emit('new-line', this.content);
         this.content = '';
     },

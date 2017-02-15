@@ -35,6 +35,13 @@ export default {
   sockets:{
     connId: function(val){
       this.userId = val;
+    },
+    newMessage: function(val){
+      this.submitContent(val);
+    },
+    clearScreen: function(val){
+      this.content = '';
+      this.title = '';
     }
   },
   methods: {
