@@ -21,11 +21,14 @@ export default {
 
   },
   methods: {
+    // Submits a line when the user hits enter
+    // Does some stuff to try to make sentences look "proper"
     submitLine: function(){
         if(this.state == 'sentence') this.content.endsWith('.') ? this.content += ' ' : this.content += '. ';
         this.$socket.emit('new-line', this.content);
         this.content = '';
     },
+    // Gets the correct CTA for the text box
     segmentName: function(){
         if(this.state == 'title') return 'story title';
         else return 'next sentence'

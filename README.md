@@ -1,6 +1,6 @@
-# ted-libs
+# literary front end
 
-> TED talk front end demo
+> front end JS package for node demo
 
 ## Build Setup
 

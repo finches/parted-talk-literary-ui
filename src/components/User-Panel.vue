@@ -18,6 +18,8 @@
 export default {
   name: 'user-panel',
   sockets:{
+    // When a userName event is received, checks to see if its the current user
+    // or if the name needs to be added to the greater list of users
     userName: function(val){
         if(val.id != this.userid){
             this.users[val.id] = val.name;
@@ -27,12 +29,14 @@ export default {
         }
         this.getUserIds();
     },
+    // Sets up the initial list of connections
     initialUsers: function(val){
         val.forEach((returnedUser) => {
             if(returnedUser.id != this.userid) this.users[returnedUser.id] = returnedUser.name;
         });
         this.getUserIds();
     },
+    // Removes a user when disconnecting
     removeUser: function(val){
         delete this.users[val];
         this.getUserIds();
@@ -43,6 +47,7 @@ export default {
     
   },
   methods: {
+    // Gets a list of user ids to render in the connected user box
     getUserIds: function(){
         var ids = [];
         for(var id in this.users) {

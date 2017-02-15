@@ -19,6 +19,7 @@ export default {
     
   },
   methods: {
+    // Sends the user's name to the server so it can be emitted
     sendName() {
         this.$el.style.display = 'none';
         this.$emit('username', this.name);

@@ -33,26 +33,32 @@ export default {
     Words
   },
   sockets:{
+    // Gets the initial set of messages and passes it to the primary render component
     initialMessages: function(val){
       val.forEach((m) => {
         this.submitContent(m);
       });
     },
+    // Gets the current user's ID
     connId: function(val){
       this.userId = val;
     },
+    // Adds a new message to the list
     newMessage: function(val){
       this.submitContent(val);
     },
+    // Clears the list of messages when the maximum is reached
     clearScreen: function(val){
       this.content = '';
       this.title = '';
     }
   },
   methods: {
+    // Sets the current user's name
     setUsername: function(name){
       this.username = name;
     },
+    // Submits content to the correct child component in a format it's epxecting
     submitContent: function(content){
       if(this.getState() == 'title') this.title = content;
       else{
@@ -60,6 +66,7 @@ export default {
         if(Math.random() > 0.85) this.content += "[br]";
       }
     },
+    // Determines if a title or sentence should be submitted
     getState: function(){
       if(this.title.length == 0) return 'title';
       else return 'sentence';

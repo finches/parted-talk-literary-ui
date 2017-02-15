@@ -5,10 +5,12 @@
 </template>
 
 <script>
+// Application dependencies
 import Navigation from './components/Navigation'
 import Vue from 'vue'
 import VueSocketio from 'vue-socket.io'
 
+// Sets up the websockets connection
 Vue.use(VueSocketio, 'http://localhost:4001');
 
 export default {

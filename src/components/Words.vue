@@ -15,6 +15,7 @@ export default {
 
   },
   methods: {
+    // Splits on break characters. This is lazy but gets the job done
     formatContent: function(){
         return this.content.split("[br]").filter((v) => { return v.length > 0; });
     }
