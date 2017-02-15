@@ -33,6 +33,11 @@ export default {
     Words
   },
   sockets:{
+    initialMessages: function(val){
+      val.forEach((m) => {
+        this.submitContent(m);
+      });
+    },
     connId: function(val){
       this.userId = val;
     },
